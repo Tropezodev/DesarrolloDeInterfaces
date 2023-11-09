@@ -76,18 +76,18 @@ class Ventana(QWidget):
         try:
             if (self.temperatura1_combo.currentText()=="Celsius" and self.temperatura2_combo.currentText()=="Celsius"):
                 resultado = float(self.temperatura_input.text())
-                self.resultado_label.setText(f"Resultado: {resultado} Celsius")
+                self.resultado_label.setText(f"Resultado: {resultado:.2f} Celsius")
             elif (self.temperatura1_combo.currentText()=="Celsius" and self.temperatura2_combo.currentText()=="Fahrenheit"):
                 resultado = float(self.temperatura_input.text())
                 resultado = ((resultado*9/5)+32)
-                self.resultado_label.setText(f"Resultado: {resultado} Fahrenheit")
+                self.resultado_label.setText(f"Resultado: {resultado:.2f} Fahrenheit")
             elif (self.temperatura1_combo.currentText()=="Fahrenheit" and self.temperatura2_combo.currentText()=="Fahrenheit"):
                 resultado = float(self.temperatura_input.text())
-                self.resultado_label.setText(f"Resultado: {resultado} Fahrenheit")
+                self.resultado_label.setText(f"Resultado: {resultado:.2f} Fahrenheit")
             else:
                 resultado = float(self.temperatura_input.text())
                 resultado = ((resultado-32)*5/9)
-                self.resultado_label.setText(f"Resultado: {resultado} Fahrenheit")
+                self.resultado_label.setText(f"Resultado: {resultado:.2f} Fahrenheit")
         except:
             self.resultado_label.setStyleSheet("""
             color: "red";
