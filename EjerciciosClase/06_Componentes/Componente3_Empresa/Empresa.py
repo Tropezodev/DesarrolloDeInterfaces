@@ -48,7 +48,7 @@ class QWidgetMod(QWidget):
         self.setLayout(layout)
         
         #Juntamos los String de los elementos a uno solo
-        self.data = f'-Rutal del icono: {empresa_dict["img"]}\n -Nombre de la empresa: {empresa_dict["name"]}\n -Dirección de la empresa: {empresa_dict["adress"]}'
+        self.data = f'  -Rutal del icono: {empresa_dict["img"]}\n  -Nombre de la empresa: {empresa_dict["name"]}\n  -Dirección de la empresa: {empresa_dict["adress"]}'
         
     #Redefinimos la función mouseDoubleClickEvent (override) para que emita la señal double_click
     def mouseDoubleClickEvent(self,e):
@@ -77,6 +77,13 @@ class Ventana(QMainWindow):
         
         #Establecemos el componente como widget central
         self.setCentralWidget(empresa)
+
+        #Conectamos la señal "double_click" al método recibir_datos
+        empresa.double_click.connect(self.recibir_datos)
+        
+    #El método recibir_datos imprime los datos recibidos como parámetro de la señal double_click
+    def recibir_datos(self, data):
+        print(data)
 
 #Punto de entrada para la aplicación
 if __name__ == "__main__":
