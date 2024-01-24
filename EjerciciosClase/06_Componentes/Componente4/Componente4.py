@@ -8,16 +8,21 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, Q
 from PySide6.QtGui import QPixmap, QMouseEvent, QIcon
 from PySide6.QtCore import Qt, Signal, Property
 
-class ListaEmpresas(QScrollArea):
+class Empresas(QScrollArea):
     
     #Creamos la señal que se emitirá al hacer doble click
-    double_click = Signal(str)
+    empresa_seleccionada = Signal(str)
   
     #Constructor de la clase QWidgetMod
-    def __init__(self, empresas_dict:str, parent=None):
+    def __init__(self, empresas, parent=None):
         
         #Llamada al constructor de la superclase
-        super().__init__()
+        super().__init__(parent)
+        
+        #Redefinimos varios de los métodos del padre (QScrollArea)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.setWidgetResizable(True)
         
         #Creamos el Widget que se añadirá al QScrollArea
         self.empresa = QWidget()
@@ -50,7 +55,7 @@ class Ventana(QMainWindow):
         # Asignamos el título de la ventana
         self.setWindowTitle("Empresa")
         
-        #Creamos el diccionario que le vamos a pasar por parámetro
+        #Creamos el diccionario de diccionarios que le vamos a pasar por parámetro
         empresas_dict= {
                         0:{"img":os.path.join(os.path.dirname(__file__),"Pepo.png"),"name":"PepoInc0","adress":"Calle Falsa 1"},
                         1:{"img":os.path.join(os.path.dirname(__file__),"Pepo.png"),"name":"PepoInc1","adress":"Calle Falsa 2"},
