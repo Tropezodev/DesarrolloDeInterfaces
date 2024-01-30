@@ -48,7 +48,7 @@ class QWidgetMod(QWidget):
         self.setLayout(layout)
         
         #Juntamos los String de los elementos a uno solo
-        self.data = f'  -Rutal del icono: {empresa_dict["img"]}\n  -Nombre de la empresa: {empresa_dict["name"]}\n  -Dirección de la empresa: {empresa_dict["adress"]}'
+        self.data = f'  -Rutal del icono: {empresa_dict["img"]}\n  -Nombre de la empresa: {empresa_dict["name"]}\n  -Dirección de la empresa: {empresa_dict["address"]}'
         
     #Redefinimos la función mouseDoubleClickEvent (override) para que emita la señal double_click
     def mouseDoubleClickEvent(self,e):
